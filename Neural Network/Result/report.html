@@ -1,0 +1,388 @@
+
+<html>
+<head>
+<title> CS640 P1 - Xiankang Wu</title>
+<style>
+<!--
+body{
+font-family: 'Trebuchet MS', Verdana;
+}
+p{
+font-family: 'Trebuchet MS', Times;
+margin: 10px 10px 15px 20px;
+}
+h3{
+margin: 5px;
+}
+h2{
+margin: 10px;
+}
+h1{
+margin: 10px 0px 0px 20px;
+}
+div.main-body{
+align:center;
+margin: 30px;
+}
+hr{
+margin:20px 0px 20px 0px;
+}
+
+.flex_box {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.image_size {
+	width: 500px;
+}
+
+-->
+</style>
+
+</head>
+
+<body>
+<center>
+<a href="http://www.bu.edu"><img border="0" src="http://www.cs.bu.edu/fac/betke/images/bu-logo.gif"
+width="119" height="120"></a>
+</center>
+
+<h1>P1 Neural Network</h1>
+<p> 
+ CS 440/640 Programming assignment 1 <br>
+ Xiankang Wu - U59844514 <br>
+ Rongyu Wang - U37992938 <br>
+    March 6 2019 
+</p>
+
+<div class="main-body">
+<hr>
+<h2> Problem Definition </h2>
+
+<p>
+In this assignment, we applied what we learned about neural network from class. 
+<br>
+What we did:
+</p>
+<ul>
+	<li>Understood basics of a neural network</li>
+	<li>Implemented both front and back propagation algorithms</li>
+	<li>Dug into the concept of overfitting and discussed methods to avoid it</li>
+	<li>Applied 5-fold cross validation and L2 regularization</li>
+</ul>
+
+<hr>
+
+<h2> Method and Implementation </h2>
+<div>
+	<p>Based on the skeleton code, we modified several functions.</p>
+	<ul>
+		<li>__init__ : added two params
+			<ul>
+				<li>
+					hidden_dim: Number of nodes in the hidden layer.
+				</li>
+				<li>
+					lamda: Corresponding to the &#955; symbol used in l2 regularization
+				</li>
+				<li>
+					Added a pair of theta and bias. They are initialized as matrices with random values, and with the sizes corresponding to the number of input/output data entries and the hidden layer nodes.
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div>
+	<ul>
+		<li>compute_cost: activation function and L2 regularization
+			<br>
+			<ul>
+				<li>
+					Activation function: We selected hyperbolic tangent funcition. 
+					We called <b>np.tanh()</b> with the help of numpy library.
+				</li>
+				<li>
+					Added a pair of theta and bias. They are initialized as matrices with random values, and with the sizes corresponding to the number of input/output data entries and the hidden layer nodes.
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+<div>
+	<ul>
+		<li>compute_cost: activation function and L2 Regularization
+			<ul>
+				<li>
+					Activation function: We selected hyperbolic tangent funcition for hidden layer and keep softmax function for output layer.
+					We used <b>np.tanh()</b> with the help of numpy library.
+				</li>
+				<li>
+					data_loss: L2 regularization requires a regularization term, which measures model complexity. As we can see from the following image, we need to add a parameter &#955. 
+					Based on this, we added <b>l2_regularization_cost</b> to represent this term.
+					<br>
+					<img src="https://cdn-images-1.medium.com/max/1600/1*6v8U-5NwcWrQ1mKiTfYz6Q.png">
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div>
+	<ul>
+		<li>fit
+			<ul>
+				<li>
+					For L2 regularization part, we edited both the loss function and back propagation algo.
+					For each dtheta and dbias, we added an extra term for L2 regularization. For example:
+					<br>
+					<b>Before:</b>
+					<br>
+					dtheta2 = np.dot(a.T, beta2)
+					<br>
+					<b>After:</b>
+					<br>
+					dtheta2 = np.dot(a.T, beta2) + self.L2_lambda * self.theta2
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+<hr>
+<h2>Experiments</h2>
+
+<p>
+	With 5-fold cross valication, for each type of data (linear / non-linear), we performed 5 times of model training and fitting. 
+</p>
+<p>
+	For digits recognition, we loaded both training data and test data, training the model using training data and performed test on test data.
+	For all tests, we evaluated three key factors: confusion matrix, accuracy and cost.
+</p>
+<p>
+	We also selected different number of nodes for hidden layer. For parts before digits recognization, we added 3 hidden nodes. For digits recognization, we tested 10, 20 and 30 nodes. The result showed that by adding 10 nodes each time, we can get a slight improvement in both accuracy and cost.
+</p>
+<p>
+	The learning rate can be a key factor in NN evaluation. The learning rates we selected are: 0.1, 0.05, 0.01 and 0.001 respectively. Check out our solution to problem 3 for details.
+</p>
+<p>
+	We didn't change num_epoch = 1,000.
+
+
+<hr>
+<h2> Solutions</h2>
+<ul>
+	<li>
+		<b>Problem 2: The usefulness of cross validation</b>
+		<p>
+		By doing cross-validation, we can use all our existing data both for training and for testing. 
+		<br><br>
+		If we only train our model without splitting the original training data, we cannot validate if the model trianed is biased or performs well only on existing data by chance. 
+		When we want to avoid overfitting, cross validation is very useful. It allows us to adjust hyperparameters without extra test sets. 
+		<br><br>
+		In summary, We can train our model and validate its result by cross validation, and detect if there are large variations in the confusion matrix based on different parts of the original data.
+		</p>
+	</li>
+</ul>	
+
+<ul>
+	<li>
+		<b>Problem 3: The effect of learning rate</b>
+		<p>
+			Based on our trained neural network, we applied different learning rates on both linear and non-linear data.
+			<br><br>
+			The learning rates we selected are: 0.1, 0.05, 0.01 and 0.001 respectively. The smaller learning rate is, the slower the weights within the net are adjusted and updated. According to the plotted graph and data derived, we found that from 0.1 down to 0.05, there was a significant improvement on performace, but when it goes small, the improvement was much smaller as well.
+		</p>
+	</li>
+</ul>	
+
+<ul>
+	<li>
+		<b>Problem 4: Overfitting</b>
+		<p>
+		 Overfitting is a modeling error, when a trained model does not generalize well from its training data to unseen test data. It may occur when number of epochs is too high, or there are too many number of nodes in the hidden layers than necessary.
+		</p>
+		<p>
+			<b>Ways to reduce overfitting</b>
+		</p>
+		<ol>
+			<li>
+				Apply cross validation. It prevents overfitting by spliting training set into smaller sets and treats other sets as unseen test sets, so that it provides a way to prevent overfitting on the training set.
+			</li>
+			<li>
+				Select more training data. Add more relevent and clean training sets to help the algorithm detect the pattern we wish to learn from the data(which is called signal) better.
+			</li>
+			<li>
+				Perform feature selection: We can manually improve the generalizability by removing irrelevant input features. Some algorithms have built-in feature selection.
+			</li>
+			<li>
+				Regularization. As the L2 regularization we implemented, this method helps simplify the model. It works better if we combine it with cross validation. 
+			</li>
+		</ol>
+	</li>
+</ul>	
+
+<ul>
+	<li>
+		<b>Problem 5: Influence of L2 regularization before-and-after</b>
+		<p>
+			We implemented L2 regularization. The analysis of tje results indicated that there was an slight decrease in cost and an slight increase in accuracy. For example, from 0.1077 down to 0.080 in cost and 0.9725 up to 0.9875 in accuracy for non-linear data set.
+			<br><br>
+			The result showed a slight improvement in performance. We believe the reason why we haven't seen a larger improvement is because the data set provided is not likely to cause overfitting. L2 regularization is used mainly for penalizing complex models, so we believe that with more complex data, we may observe a larger improvement in performance.		
+		</p>
+	</li>
+</ul>	
+
+<ul>
+	<li>
+		<b>Problem 6: Performance discussion of our neural net</b>
+		<p>
+			In this section, we trained our neural net based on digits training sets and apply it to recognize test sets. With 10 nodes in the hidden layer, we can achieve 0.927 accuracy. With 20 nodes we can achieve 0.945 accuracy.
+    		<br><br>
+    		We found that number of nodes larger than 20 may cause overfitting, which decreases the performance of our NN.	
+		</p>
+	</li>
+</ul>	
+
+
+<hr>
+<h2> Results</h2>
+<!-- <g><b>Linear Data</b></p> -->
+<h3>Linear Data</h3>
+<div class="flex_box">
+	<div>
+	    <img src="img/linear_data_origin.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/linear_data_decision_boundary_origin.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/linear_data_decision_boundary_lr_0.1.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/linear_data_decision_boundary_lr_0.05.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/linear_data_decision_boundary_lr_0.01.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/linear_data_decision_boundary_lr_0.001.png" class="image_size">
+	</div>
+</div>
+<br>
+<div>
+		<li><b>With L2 regularization</b></li>
+	    <img src="img/linear_data_decision_boundary_final.png" class="image_size">
+</div>
+
+<br>
+<h3>Non linear Data</h3>
+<div class="flex_box">
+	<div>
+	    <img src="img/non_linear_data_origin.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/non_linear_data_decision_boundary_origin.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/non_linear_data_decision_boundary_lr_0.1.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/non_linear_data_decision_boundary_lr_0.05.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/non_linear_data_decision_boundary_lr_0.01.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/non_linear_data_decision_boundary_lr_0.001.png" class="image_size">
+	</div>
+</div>
+<br>
+<div>
+		<li><b>With L2 regularization</b></li>
+	    <img src="img/non_linear_data_decision_boundary_final.png" class="image_size">
+</div>
+
+<br>
+<h3>Digits Recognization</h3>
+<div class="flex_box">
+	<div>
+	    <img src="img/digits_recognization_10_hidden_nodes.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/digits_recognization_20_hidden_nodes.png" class="image_size">
+	</div>
+	<div>
+	    <img src="img/digits_recognization_30_hidden_nodes.png" class="image_size">
+	</div>
+</div>
+<br>
+
+
+<hr>
+<h2> Discussion </h2>
+
+<ul>
+	<li>
+		Our method performs well on the provided data sets. We can even further optimize the result if we switch to some other activation functions, for example <b>ReLu</b>, which is less computationally expensive than <b>tanh</b> and <b>sigmoid</b> because it involves simpler mathematical operations. 
+		This can be a good start to work in the future.
+	</li>
+	<li>
+		Our apporach has good accuracy and cost even without the implementation of L2 regularization. As we described in <b>problem 5</b>, we believe that it is highly dependent on the variance and complexity of the training data set.
+ 		
+ 	</li>
+</ul>
+</p>
+
+<hr>
+<h2> Conclusion</h2>
+	<li>
+		<p>
+			The data sets selected and the methods used to avoid overfitting are both crucial in training an effeicient and accurate neural network. Also, it is not always the case to add more nodes into the hidden layer, since it may also cause overfitting. 
+		</p>
+	</li>
+
+<hr>
+<h2> Credits and Bibliography </h2>
+<p>
+
+<ul>
+	<li>
+	<b>Online references:</b>
+	<ul>
+		<li>
+			date: March 4 to March 6, 2019
+			<br>
+			<a href="https://elitedatascience.com/machine-learning-iteration">Link1</a>
+			<a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0">Link2</a>
+			<a href="https://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw">Link3</a>
+		</li>
+	</ul>
+</ul>
+
+</li>
+
+<ul>
+	<li>
+	<b>Team members:</b>
+	<ul>
+		<li>
+			Xiankang Wu - U59844514
+		</li>
+		<li>
+			Rongyu Wang - U37992938
+		</li>
+	</ul>
+</li>
+</ul>
+
+</div>
+</body>
+
+
+
+</html>
