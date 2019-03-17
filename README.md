@@ -13,10 +13,12 @@ I used **python** to implement this project. Please check *neural network* folde
 There are four objectives that I achieved:
 
 - Understand how neural networks work 
-
 - Implement a simple neural network 
-
 - Apply backpropagation algorithm to train a neural network 
-
 - Understand the role of different parameters of a neural network, such as epoch and learning rate.
 
+
+
+## Credits
+
+Boston University Department of Computer Science, CS640, Professor Betke
