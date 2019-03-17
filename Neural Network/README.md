@@ -37,8 +37,10 @@ Every time we use the test set (in the DATA folder) to train our neural network,
 
 Please checkout the *Result* folder for details.
 
-
-
 ## Collaborator
 
 Rongyu Wang @WangIsabel
+
+## Credits
+
+Boston University Department of Computer Science, CS640, Professor Betke
