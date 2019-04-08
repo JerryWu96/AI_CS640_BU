@@ -10,7 +10,7 @@ This folder contains our baseline appraoch for applying transfer learning techni
 
 **Tools Used:** PyTorch, ResNet-18
 
-### Transfer Learning Models:
+## Transfer Learning Models
 
 Two major transfer learning scenarios are examined here:
 
