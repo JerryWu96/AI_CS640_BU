@@ -8,9 +8,9 @@ Building and training a neural network using backpropagation algo.
 
 ## Neural Network
 
-I used **python** to implement this project. Please check *neural network* folder. 
+We used **Python** and related libraries to implement this project. Please check *neural network* folder. 
 
-There are four objectives that I achieved:
+There are four objectives that we achieved:
 
 - Understand how neural networks work 
 - Implement a simple neural network 
