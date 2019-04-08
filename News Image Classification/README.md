@@ -2,21 +2,9 @@
 
 This folder contains our second project.
 
-## Objective
+## Please see details in our report
 
-- 
-
-## Run the code
-
-
-
-## Algorithm
-
-
-
-## Results
-
-
+Supplemented as part of our submission, can also be found inside folder Files.
 
 ## Credits
 
