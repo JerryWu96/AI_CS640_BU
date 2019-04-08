@@ -10,6 +10,14 @@ https://github.com/wondonghyeon/protest-detection-violence-estimation
  - Apply the model to test on our dataset 
  - Evaluate the annotation of testset, predict labels 'violence', 'protest', and other visual attributes
 
+## Requirements
+
+Pytorch
+Numpy
+pandas
+scikit-learn
+cuda
+
 ## Commands
 
 ### Training
