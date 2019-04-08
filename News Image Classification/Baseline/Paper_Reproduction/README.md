@@ -12,11 +12,17 @@ https://github.com/wondonghyeon/protest-detection-violence-estimation
 
 ## Commands
 
-Training:
-python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
+### Training
 
-Evaluation:
+```bash
+python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
+```
+
+### Evaluation
+
+```bash
 python pred.py --img_dir path/to/some/image/directory/ --output_csvpath result.csv --model model_best.pth.tar --cuda
+```
 
 The best model is too big for uploading. If you want the training model, please contact Rongyu Wang by email.
 
