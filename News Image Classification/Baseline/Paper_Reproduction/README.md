@@ -13,9 +13,13 @@ https://github.com/wondonghyeon/protest-detection-violence-estimation
 ## Requirements
 
 Pytorch
+
 Numpy
+
 pandas
+
 scikit-learn
+
 cuda
 
 ## Commands
