@@ -12,6 +12,24 @@ For this project, we would like to build a system that looks for such event in a
 
 To reach our goal, we decided to try three different approaches for building the deep neural network, two using transfer learning techniques and one from reproducing the work from the original paper where Topic 2 is based on. We aim at comparing the approaches, as well as gaining a deeper level of understanding on Convolutional Neural Network structure that’s heavily used in solving Computer Vision problems. 
 
+## File Structure
+Baseline:
+- Transfer Learning on Multi Object Detection
+- Transfer Learning on Single Class
+- Paper Reproduction
+
+
+Files:
+- Brainstorming Notes
+- Report
+- Presentation PPT
+
+
+Improvement:
+- Crowd Detection
+- Expert System
+
+
 ## Run the code
 
 We used **Python** and related machine learning libraries, for example. **PyTorch**.
