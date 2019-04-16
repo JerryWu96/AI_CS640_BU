@@ -30,7 +30,7 @@ Improvement:
 - Expert System
 
 
-## Run the code
+## Run the Code
 
 We used **Python** and related machine learning libraries, for example. **PyTorch**.
 
