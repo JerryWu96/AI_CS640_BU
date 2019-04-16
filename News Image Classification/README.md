@@ -2,7 +2,7 @@
 
 This folder contains our second project for BU CS640 Artificial Intelligence. 
 
-## Problem definition
+## Problem Definition
 
 Nowadays journalists are not the first ones to record an emergency event but any civilians with phones, and they send to social media almost immediately when such event takes place in their proximity. Such examples can be found as Twitter posts during the Paris 2015 Bataclan event, 2013 Boston Marathon Bombing etc.; the use of hashtags make these instances searchable.
 
