@@ -21,7 +21,11 @@ There are four objectives that we achieved:
 
 ## News Image Classification
 
-TBA
+Social media has become one of our best source to understand what is going on around us, from all over the world. If there is any protest taking place, we can analyze the images posted to social media and extracrt useful info.
+
+For our second project, we would like to design a prototype of an expert system which can help the police to dynamically analyze the image flow online and locate if there is any protest happening. Also, we conducted multi-label object classification and can help identify if there are fire or protest signs presented.
+
+Plesae check our corresponding folder for proejct definition, problems we tried to address, and our full report.
 
 ## Credits
 

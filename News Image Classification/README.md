@@ -1,4 +1,4 @@
-# New Image Classification
+# News Image Classification
 
 This folder contains our second project for BU CS640 Artificial Intelligence. 
 
