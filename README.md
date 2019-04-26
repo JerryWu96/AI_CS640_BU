@@ -28,7 +28,7 @@ For our second project, we would like to use <b>Python</b> to help us design and
 
 Plesae check our corresponding folder for proejct definition, problems we tried to address, and our full report.
 
-## 3D Tic Tac Toe
+## 3D Tic-Tac-Toe
 
 This is my third project coded on myself with <b>JAVA</b>.
 
