@@ -4,7 +4,7 @@ This folder contains my third project created for BU CS640 Artificial Intelligen
 
 ## Problem Definition
 
-3D tic-tac-toe is an  strategy board game, generally designed for two players taking turns and compete against each other. It is similar to the traditional 3 by 3 tic-tac-toe but is played in a cubic array of cells. For this particular game, I used 4 by 4 by 4 board.
+3D tic-tac-toe is a strategy board game, generally designed for two players taking turns and compete against each other. It is similar to the traditional 3 by 3 tic-tac-toe but is played in a cubic array of cells. For this particular game, I used 4 by 4 by 4 board.
 
 Check out the wiki page for the rules:
 
@@ -46,3 +46,9 @@ Boston University Department of Computer Science, CS640, Professor Betke
 This repo was created by:
 
 Xiankang (Jerry) Wu
+
+Special thanks to my teammates for their excellent work! 
+
+Maya Shen https://github.com/starrymonkey
+
+Rongyu Wang https://github.com/WangIsabel

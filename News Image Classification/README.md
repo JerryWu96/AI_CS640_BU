@@ -44,6 +44,8 @@ This repo was created by:
 
 Xiankang (Jerry) Wu
 
+Special thanks to my teammates for their excellent work! 
+
 Maya Shen https://github.com/starrymonkey
 
 Rongyu Wang https://github.com/WangIsabel
